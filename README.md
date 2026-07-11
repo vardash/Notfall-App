@@ -1,76 +1,88 @@
-Notfall-App
+# Notfall-App
 
-«Eine diskrete, zuverlässige und datenschutzfreundliche Notfall-App für Android.»
+> Eine diskrete, zuverlässige und datenschutzfreundliche Notfall-App für Android.
 
-Projektziel
+---
 
-Die Notfall-App soll Menschen in Gefahrensituationen dabei unterstützen, unauffällig Hilfe anzufordern, ohne das Smartphone sichtbar bedienen zu müssen.
+## Projektziel
+
+Die **Notfall-App** soll Menschen in Gefahrensituationen dabei unterstützen, unauffällig Hilfe anzufordern, ohne das Smartphone sichtbar bedienen zu müssen.
 
 Die Anwendung wird speziell für Stresssituationen entwickelt und folgt dem Grundsatz:
 
-«So einfach wie möglich – so zuverlässig wie nötig.»
+> **So einfach wie möglich – so zuverlässig wie nötig.**
 
 ---
 
-Leitprinzipien
+# Leitprinzipien
 
-Die Entwicklung orientiert sich an vier Grundprinzipien:
+Die Entwicklung orientiert sich an vier unveränderlichen Grundprinzipien.
 
-- 🛡️ Einfachheit – Unter Stress muss die Bedienung intuitiv sein.
-- 🤫 Diskretion – Der Alarm soll möglichst unauffällig ausgelöst werden.
-- ✅ Zuverlässigkeit – Die Kernfunktionen müssen jederzeit funktionieren.
-- 🔒 Datenschutz – Alle sensiblen Daten bleiben ausschließlich auf dem Gerät.
+- 🛡️ **Einfachheit**  
+  Unter Stress muss die Bedienung intuitiv und leicht merkbar sein.
+
+- 🤫 **Diskretion**  
+  Die Notfallauslösung erfolgt möglichst unauffällig.
+
+- ✅ **Zuverlässigkeit**  
+  Die Kernfunktionen müssen jederzeit funktionieren.
+
+- 🔒 **Datenschutz**  
+  Alle sensiblen Daten verbleiben ausschließlich auf dem Gerät.
 
 ---
 
-Hauptfunktionen
+# Hauptfunktionen
 
 - Diskrete Notfallauslösung über die Lautstärketasten
 - Sicherheits-Countdown mit Abbruchmöglichkeit
-- SMS-Versand an Notfallkontakte
+- SMS an Notfallkontakte
 - Optionale Standortübermittlung
-- Optionaler Fake-Anruf als Ausstiegshilfe
-- Lokale Speicherung aller Daten
-- Offline-fähig
+- Optionaler Fake-Anruf als soziale Ausstiegshilfe
+- Lokale Datenspeicherung
+- Offline-Betrieb
 
 ---
 
-Technologie
+# Technologie
 
-Komponente| Technologie
-Programmiersprache| Dart
-Framework| Flutter
-UI| Flutter (optional FlutterFlow zur UI-Erstellung)
-Datenbank| SQLite
+| Komponente | Technologie |
+|------------|-------------|
+| Framework | Flutter |
+| Programmiersprache | Dart |
+| Datenbank | SQLite |
+| UI | Flutter (optional FlutterFlow als UI-Designer) |
 
 ---
 
-Zielplattformen
+# Zielplattformen
 
-Aktuell
+## Aktuell
 
 - Android
 
-Geplant
+## Geplant
 
 - Wear OS
 
-Zukunft
+## Zukunft
 
-- iOS / Apple Watch (separates Konzept erforderlich)
+- iOS / Apple Watch (separates Konzept)
 
 ---
 
-Architektur
+# Architektur
 
 Die Anwendung basiert auf einer modularen Architektur.
 
+```text
 App
  │
  ▼
 Bootstrapper
  │
  ├── Capability Scanner
+ ├── Config Manager
  ├── Core
  ├── Module Manager
  │
@@ -78,18 +90,54 @@ Bootstrapper
  ├── SMS
  ├── Standort
  ├── Fake Call
- ├── Logging
  ├── Notification
+ ├── Logging
  └── weitere Module
+```
 
-Der Bootstrapper erkennt die Plattform und die verfügbaren Gerätefähigkeiten und lädt anschließend automatisch die benötigten Module.
+Der Bootstrapper erkennt die Plattform sowie die technischen Fähigkeiten des Geräts und initialisiert anschließend nur die benötigten Module.
+
+Dadurch folgt die Anwendung dem Grundsatz:
+
+> **Eine Codebasis – viele Geräte**
 
 ---
 
-Dokumentation
+# Trigger
 
-Die technische Dokumentation befindet sich im Ordner docs/.
+Die Standardauslösung erfolgt über:
 
+- **3× Volume Down innerhalb von 3 Sekunden**
+
+Alternativ kann **Volume Up** gewählt werden.
+
+Es werden bewusst **keine frei konfigurierbaren Tastenkombinationen** unterstützt.
+
+Unter Stress soll sich der Nutzer nur **eine einzige Aktion merken müssen**.
+
+---
+
+# Datenschutz
+
+Die Notfall-App arbeitet vollständig lokal.
+
+- Keine Cloud
+- Keine Server
+- Keine Benutzerkonten
+- Keine Telemetrie
+- Keine Analyse
+
+Standortdaten werden ausschließlich für den Notfall verwendet.
+
+---
+
+# Dokumentation
+
+Die Projektdokumentation befindet sich im Verzeichnis `docs/`.
+
+Geplante Dokumente:
+
+```text
 docs/
 ├── master-concept.md
 ├── architecture.md
@@ -100,31 +148,60 @@ docs/
 ├── privacy.md
 ├── roadmap.md
 └── changelog.md
+```
 
 ---
 
-Projektstatus
+# Projektstatus
 
-Aktuelle Version: Master-Konzept 1.1
+## Aktuelle Konzeptversion
 
-Der Schwerpunkt liegt derzeit auf der Konzeption und Entwicklung einer stabilen Android-Version mit modularer Architektur und zuverlässiger Notfallauslösung.
+**Master-Konzept Version 1.1**
 
----
-
-Entwicklungsphilosophie
-
-Dieses Projekt verfolgt den Grundsatz:
-
-«Eine Codebasis – viele Geräte.»
-
-Die Geschäftslogik wird vollständig in Dart entwickelt.
-
-Plattformabhängige Funktionen werden über klar definierte Schnittstellen gekapselt, sodass zukünftige Erweiterungen (z. B. Wear OS) mit möglichst geringem Aufwand integriert werden können.
-
-Neue Funktionen werden nur aufgenommen, wenn sie die vier Leitprinzipien Einfachheit, Diskretion, Zuverlässigkeit und Datenschutz unterstützen.
+Der Schwerpunkt liegt aktuell auf der Architekturplanung und der Entwicklung einer stabilen Android-Version.
 
 ---
 
-Lizenz
+# Entwicklungsphilosophie
 
-Die Lizenz wird im weiteren Projektverlauf festgelegt. 
+Die Notfall-App soll nicht möglichst viele Funktionen besitzen.
+
+Sie soll Menschen in einer Ausnahmesituation schnell, diskret und zuverlässig helfen.
+
+Neue Funktionen werden nur aufgenommen, wenn sie die vier Grundprinzipien
+
+- Einfachheit
+- Diskretion
+- Zuverlässigkeit
+- Datenschutz
+
+unterstützen und die Bedienung nicht unnötig erschweren.
+
+---
+
+# Roadmap
+
+## Version 1
+
+- Android
+- SMS
+- Standort
+- Trigger
+- Fake-Anruf
+- Testmodus
+
+## Spätere Versionen
+
+- Wear OS
+- mehrere Notfallkontakte
+- SMS-Wiederholung
+- Check-in-Funktion
+- Geofencing
+- Import / Export
+- Barrierefreiheit
+
+---
+
+# Lizenz
+
+Die Lizenz wird im weiteren Projektverlauf festgelegt.
